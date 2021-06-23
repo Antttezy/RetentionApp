@@ -3,9 +3,13 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using RetenionApp.Data;
+using RetenionApp.Models;
+using RetenionApp.Services;
 
 namespace RetenionApp
 {
@@ -21,7 +25,9 @@ namespace RetenionApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson();
+            services.AddDbContext<RetentionContext>(options => options.UseNpgsql(Configuration.GetConnectionString("Retention")));
+            services.AddTransient<IRepository<User>, UserRepository>();
 
             services.AddSpaStaticFiles(configuration =>
             {
@@ -48,13 +54,6 @@ namespace RetenionApp
             app.UseSpaStaticFiles();
 
             app.UseRouting();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller}/{action=Index}/{id?}");
-            });
 
             app.UseSpa(spa =>
             {
