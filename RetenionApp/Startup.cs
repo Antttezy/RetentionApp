@@ -1,7 +1,5 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -26,8 +24,11 @@ namespace RetenionApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers().AddNewtonsoftJson();
+            services.AddMemoryCache();
             services.AddDbContext<RetentionContext>(options => options.UseNpgsql(Configuration.GetConnectionString("Retention")));
             services.AddTransient<IRepository<User>, UserRepository>();
+            services.AddTransient<IRollingRetentionProvider, RollingRetentionProvider>(factory => new RollingRetentionProvider { Days = 7 });
+            services.AddTransient<ILifetimeProvider, LifetimeProvider>();
 
             services.AddSpaStaticFiles(configuration =>
             {

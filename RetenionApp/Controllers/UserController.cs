@@ -4,8 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using RetenionApp.Models;
 using RetenionApp.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace RetenionApp.Controllers

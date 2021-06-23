@@ -17,11 +17,7 @@ const history = createBrowserHistory({ basename: baseUrl });
 const store = configureStore(history);
 
 ReactDOM.render(
-    <Provider store={store}>
-        <ConnectedRouter history={history}>
-            <App />
-        </ConnectedRouter>
-    </Provider>,
+            <App />,
     document.getElementById('root'));
 
 registerServiceWorker();
