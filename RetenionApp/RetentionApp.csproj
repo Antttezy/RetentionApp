@@ -33,6 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\components\retention.tsx" />
     <None Remove="ClientApp\src\components\UserForm.tsx" />
     <None Remove="ClientApp\src\components\UsersComponent.tsx" />
   </ItemGroup>
@@ -42,6 +43,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\components\retention.tsx" />
     <TypeScriptCompile Include="ClientApp\src\components\UserForm.tsx" />
     <TypeScriptCompile Include="ClientApp\src\components\UsersComponent.tsx" />
   </ItemGroup>

@@ -1,30 +1,24 @@
 "use strict";
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserTable = void 0;
 var React = require("react");
-require("bootstrap/dist/css");
-var UserTable = /** @class */ (function (_super) {
-    __extends(UserTable, _super);
-    function UserTable() {
-        return _super !== null && _super.apply(this, arguments) || this;
+function UserTable(_a) {
+    var users = _a.users, loading = _a.loading;
+    if (loading) {
+        return React.createElement("p", null, "\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430");
     }
-    UserTable.prototype.render = function () {
-        return (React.createElement("table", { className: "table" }));
-    };
-    return UserTable;
-}(React.Component));
+    else
+        return (React.createElement("div", null,
+            React.createElement("h1", null, "\u041F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u0438"),
+            React.createElement("ul", null, users.map(function (user) {
+                return React.createElement("li", { key: user.id },
+                    "Id: ",
+                    user.id,
+                    " \u0414\u0430\u0442\u0430 \u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u0438: ",
+                    user.registration,
+                    " \u041F\u043E\u0441\u043B\u0435\u0434\u043D\u0438\u0439 \u0440\u0430\u0437 \u0432 \u0441\u0435\u0442\u0438: ",
+                    user.lastActive);
+            }))));
+}
 exports.UserTable = UserTable;
 //# sourceMappingURL=UsersComponent.js.map
