@@ -23,7 +23,7 @@ namespace RetenionApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers().AddNewtonsoftJson();
+            services.AddControllersWithViews().AddNewtonsoftJson();
             services.AddMemoryCache();
             services.AddDbContext<RetentionContext>(options => options.UseNpgsql(Configuration.GetConnectionString("Retention")));
             services.AddTransient<IRepository<User>, UserRepository>();
@@ -55,6 +55,11 @@ namespace RetenionApp
             app.UseSpaStaticFiles();
 
             app.UseRouting();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
 
             app.UseSpa(spa =>
             {

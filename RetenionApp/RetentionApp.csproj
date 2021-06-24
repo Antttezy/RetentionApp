@@ -33,31 +33,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="ClientApp\.eslintrc.json" />
-    <None Remove="ClientApp\.gitignore" />
-    <None Remove="ClientApp\package-lock.json" />
-    <None Remove="ClientApp\package.json" />
-    <None Remove="ClientApp\public\favicon.ico" />
-    <None Remove="ClientApp\public\index.html" />
-    <None Remove="ClientApp\public\manifest.json" />
-    <None Remove="ClientApp\README.md" />
-    <None Remove="ClientApp\src\App.test.tsx" />
-    <None Remove="ClientApp\src\App.tsx" />
-    <None Remove="ClientApp\src\components\Counter.tsx" />
-    <None Remove="ClientApp\src\components\FetchData.tsx" />
-    <None Remove="ClientApp\src\components\Home.tsx" />
-    <None Remove="ClientApp\src\components\Layout.tsx" />
-    <None Remove="ClientApp\src\components\NavMenu.css" />
-    <None Remove="ClientApp\src\components\NavMenu.tsx" />
-    <None Remove="ClientApp\src\custom.css" />
-    <None Remove="ClientApp\src\index.tsx" />
-    <None Remove="ClientApp\src\react-app-env.d.ts" />
-    <None Remove="ClientApp\src\registerServiceWorker.ts" />
-    <None Remove="ClientApp\src\store\configureStore.ts" />
-    <None Remove="ClientApp\src\store\Counter.ts" />
-    <None Remove="ClientApp\src\store\index.ts" />
-    <None Remove="ClientApp\src\store\WeatherForecasts.ts" />
-    <None Remove="ClientApp\tsconfig.json" />
+    <None Remove="ClientApp\src\components\UserForm.tsx" />
+    <None Remove="ClientApp\src\components\UsersComponent.tsx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ClientApp\src\store\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\components\UserForm.tsx" />
+    <TypeScriptCompile Include="ClientApp\src\components\UsersComponent.tsx" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

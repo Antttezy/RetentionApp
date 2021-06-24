@@ -1,16 +1,31 @@
 import * as React from 'react';
-import { Route } from 'react-router';
-import Layout from './components/Layout';
-import Home from './components/Home';
-import Counter from './components/Counter';
-import FetchData from './components/FetchData';
+import { UserForm } from './components/UserForm'
 
 import './custom.css'
 
-export default () => (
-    <Layout>
-        <Route exact path='/' component={Home} />
-        <Route path='/counter' component={Counter} />
-        <Route path='/fetch-data/:startDateIndex?' component={FetchData} />
-    </Layout>
-);
+export default () => {
+    function sendData(e: Event, regdate: any, lastdate: any) {
+        e.preventDefault();
+
+        var user = {
+            Registration: regdate,
+            LastActive: lastdate
+        };
+
+        console.log(regdate, lastdate);
+
+        var data = JSON.stringify(user);
+
+        var response = fetch('https://localhost:5001/users', {
+            method: 'POST',
+            body: data,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+    }
+
+    return (
+        <UserForm onConfirm={sendData}/>
+    );
+}
